@@ -1,4 +1,4 @@
-function CardPrato({nome, preco, categoria}){
+function CardPrato({nome, preco, categoria, descricao}){
     const precoFormatado = preco.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL",
@@ -9,6 +9,10 @@ function CardPrato({nome, preco, categoria}){
             <span className="categoria">{categoria}</span>
             <h2>{nome}</h2>
             <p className="preco">{precoFormatado}</p>
+            <p className="descricao">{descricao}</p>
+            <h3>
+                {categoria === "Sobremesa" && <span> 🍰[Sobremesa]</span>} {nome}
+            </h3>
         </article>
     )
 }
