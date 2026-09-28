@@ -2,7 +2,7 @@ import { use, useState } from "react"
 
 function CardPrato({nome, preco, categoria, onAdicionar, descricao}){
     const [quantidade, setQuantidade] = useState(1)
-    const [mostrarDescricao, setMostrarDescricao] = useState()
+    const [mostrarDescricao, setMostrarDescricao] = useState(false)
     const [curtidas, setCurtidas] = useState(0)
     
     const precoFormatado = preco.toLocaleString("pt-BR", {
@@ -42,6 +42,11 @@ function CardPrato({nome, preco, categoria, onAdicionar, descricao}){
                 <button onClick={() => setCurtidas(curtidas + 1)}>
                     ❤️ Curtir ({curtidas})
                 </button>
+
+                <button onClick={() => setMostrarDescricao(!mostrarDescricao)}>
+                    {mostrarDescricao ? 'Esconder Detalhes' : 'Ver detalhes'}
+                </button>
+                {mostrarDescricao && <p className="descricao">{prato.descricao}</p>}
             </div>
 
             <button type="button" className="btn-adicionar" onClick={adicionar}>Adicionar ao pedido</button>
